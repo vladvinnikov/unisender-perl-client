@@ -8,7 +8,7 @@
 # 
 #     use UniSender::Client;
 #     my $client = UniSender::Client->new({api_key => 'YOU_KEY'});
-#     my $answer = $client->call('getList');
+#     my $answer = $client->getList();
 # 
 # =end Pod
 
