@@ -1,0 +1,8 @@
+{
+    "name"        : "UniSender::Client",
+    "version"     : "*",
+    "description" : "Perl OOP API for unisender.ru",
+    "depends"     : [ ],
+    "source-url"  : "git://github.com/vladvinnikov/unisender-perl-client.git"
+}
+

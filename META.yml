@@ -1,0 +1,21 @@
+---
+name: UniSender-Client
+version: '1.0'
+author: 
+    - 'Vlad Vinnikov <vladvinnikov@gmail.com>'
+abstract: 'Perl OOP API for unisender.ru'
+license: artistic_2
+resources:
+    license: http://www.perlfoundation.org/artistic_2_0_notes
+distribution_type: module
+requires:
+    perl: 5.8
+provides:
+    UniSender::Client:
+        file: lib/UniSender/Client.pm
+        version: '1.0'
+generated_by: 'Vlad Vinnikov'
+meta-spec:
+    url: http://module-build.sourceforge.net/META-spec-v1.2.html
+    version: 1.2
+

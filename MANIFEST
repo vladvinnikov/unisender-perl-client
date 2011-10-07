@@ -1,0 +1,7 @@
+lib/UniSender/Client.pm
+t/04-managing_email.t
+t/01-common.t
+t/03-translate_params.t
+t/02-managing_lists.t
+META.yml
+README

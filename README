@@ -1,0 +1,56 @@
+= UniSender
+
+UniSender::Client package provides full dev kit to access to api of unisender.com.ua. It uses AUTOLOAD to provide flexible functionality, so all methods will return hash that represents response of server.
+
+= Build
+All files (unless noted otherwise) can be used, modified and redistributed
+under the terms of the Artistic License Version 2. Examples (in the
+documentation, in tests or distributed as separate files) can be considered
+public domain.
+
+To build and test this module, plese get 'ufo' from
+http://github.com/masak/ufo and run
+
+    ufo
+    make
+    make test
+
+(installation is not yet supported; you can do that manually by copying the .pm
+files from lib/ recursivley in your ~/.perl/lib/ dir;
+
+== Getting Started
+
+Package provide class UniSender::Client for accessing server. For creating client you need you personal key
+
+use UniSender::Client;
+my $client = UniSender::Client->new('your secret key');
+
+For getting contacts call $client->exportContacts(). If request will be accepted client return hash in format 
+  
+  {result=>{field_names=>[...], data=>[[...], [...], ... ]}
+
+Before sent action to server client process all parameters. If it will be string client decode it to url standarts - no latin symbols will changed to equal codes.For example:
+  
+  'Прекрасный день' will be  "%D0%9F%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C"
+
+If parameter are array, client will join contents by ","(comma), also process all item like string
+
+  :sample => [233, 'foo', 545] will sample=233,foo,545
+
+Hash will decode to variables of 2 level, for example:
+
+  friend=>{name=>"Роман", car=>"BMW"}  will be friend[name]=%D0%A0%D0%BE%D0%BC%D0%B0%D0%BD&friend[car]=BMW
+
+== Dependencies
+
+perl 5.8+
+Class::Accessor
+JSON::XS
+LWP
+URI::Escape
+
+== Wikis
+
+For more information about actions and returned answers please visit:
+
+*  {UniSender Api list}[http://unisender.com.ua/help/api]
