@@ -14,6 +14,6 @@ $client = UniSender::Client->new({api_key => 'abcdfgh', locale => 'ru'});
 is  ( $client->get_locale, 'ru', 'should set non default locale' );
 
 $client = UniSender::Client->new;
-my $answer = $client->call('getList');
+my $answer = $client->getList();
 is   ($answer->{code}, 'invalid_api_key', 'should have invalid api key');
 isnt ($answer->{error}, '', 'should have error description');

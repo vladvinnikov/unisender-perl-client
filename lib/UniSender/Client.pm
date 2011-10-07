@@ -1,3 +1,17 @@
+# =begin Pod
+# 
+# =head1 UniSender::Client
+# 
+# C<UniSender::Client> is a client for unisender.ru JSON api.
+# 
+# =head1 Synopsis
+# 
+#     use UniSender::Client;
+#     my $client = UniSender::Client->new({api_key => 'YOU_KEY'});
+#     my $answer = $client->call('getList');
+# 
+# =end Pod
+
 package UniSender::Client;
 use base qw(Class::Accessor);
 use JSON::XS;
@@ -6,6 +20,20 @@ use URI::Escape;
 
 __PACKAGE__->follow_best_practice;
 __PACKAGE__->mk_accessors( qw(api_key client_ip locale) );
+
+our $AUTOLOAD;
+
+sub AUTOLOAD {
+  my $self = shift;  
+	my $method = $AUTOLOAD;
+	return if $method =~ /^.*::[A-Z]+$/;
+	$method =~ s/^.*:://;   # strip fully-qualified portion
+	my $params = $_[0] || {};
+	return $self->call($method, $params);
+}
+
+sub DESTROY {
+}
 
 sub get_locale {
 	my $self = shift;
