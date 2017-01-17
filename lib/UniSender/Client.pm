@@ -58,7 +58,7 @@ sub _default_request {
 	$request = $self->_translate_params({%$params, %$default});
 	$query = $self->_make_query($request);
 	
-	my $url = "http://www.unisender.com/" . $self->get_locale . "/api/$action?$query";
+	my $url = "https://api.unisender.com/" . $self->get_locale . "/$action?$query";
 	my $content = $self->_url_content($url);
 	
   return $self->_json_decode($content);
